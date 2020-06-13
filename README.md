@@ -32,3 +32,4 @@ following rules:
 ## Tricky points
 1. To extend language support WordTranslator.VOWELS should be extended
 2. To extend language support Locale should be configurable
+3. Functional interface can be used instead of "implements Function"

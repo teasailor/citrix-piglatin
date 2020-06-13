@@ -10,6 +10,6 @@ public class TranslateWord implements Function<String, String> {
 			return world;
 		}
 		Function<String, String> convertToLowerCase = ((String letters) -> letters.toLowerCase());
-		return new RemainPunctuation(new RemainCapitalization(convertToLowerCase.andThen(new TranslateLiterals()))).apply(world);
+		return new RemainPunctuation(new RemainCapitalization(convertToLowerCase.andThen(new TranslateLetters()))).apply(world);
 	}
 }

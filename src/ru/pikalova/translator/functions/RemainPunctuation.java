@@ -17,12 +17,16 @@ class RemainPunctuation implements Function<String, String> {
 
 	@Override
 	public String apply(String word) {
-		Matcher matcher = PUNCTUATION_PATTERN.matcher(word);
-		String reversedWord = new StringBuilder(translateLetters.apply(matcher.replaceAll(""))).reverse().toString();
-		matcher.reset();
+		String translatedLetters = translateLetters.apply(PUNCTUATION_PATTERN.matcher(word).replaceAll(""));
+		return remainPunctuationToIndexFromEnd(word, translatedLetters);
+	}
+
+	private String remainPunctuationToIndexFromEnd(String word, String translatedLetters) {
+		Matcher matcher = PUNCTUATION_PATTERN.matcher(new StringBuilder(word).reverse().toString());
+		StringBuilder builder = new StringBuilder(translatedLetters).reverse();
 		while (matcher.find()) {
-			reversedWord = new StringBuilder(reversedWord).insert(word.length() - matcher.end(), matcher.group()).toString();
+			builder.insert(matcher.start(), matcher.group());
 		}
-		return new StringBuilder(reversedWord).reverse().toString();
+		return builder.reverse().toString();
 	}
 }
