@@ -1,4 +1,4 @@
-package ru.pikalova.translator.functions;
+package ru.pikalova.translator.function;
 
 import static org.junit.Assert.*;
 

@@ -14,7 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import ru.pikalova.translator.functions.TranslateWord;
+import ru.pikalova.translator.function.TranslateWord;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TextTranslatorUnitTest {

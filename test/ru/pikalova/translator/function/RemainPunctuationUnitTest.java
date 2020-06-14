@@ -1,9 +1,11 @@
-package ru.pikalova.translator.functions;
+package ru.pikalova.translator.function;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.function.Function;
 
@@ -18,13 +20,12 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RemainCapitalizationUnitTest {
-
+public class RemainPunctuationUnitTest {
 	@Mock
 	private Function<String, String> translateWord;
 
 	@InjectMocks
-	private RemainCapitalization tested;
+	private RemainPunctuation tested;
 
 	@Captor
 	private ArgumentCaptor<String> wordCapture;
@@ -41,17 +42,26 @@ public class RemainCapitalizationUnitTest {
 	}
 
 	@Test
-	public void remainInTheBeginning() {
-		String input = "Beach";
+	public void remainApostrophe() {
+		String input = "can't";
 		assertEquals(input, tested.apply(input));
-		assertEquals("beach", wordCapture.getValue());
+		assertEquals("cant", wordCapture.getValue());
 	}
 
 	@Test
-	public void remainInTheEnd() {
-		String input = "beacH";
+	public void remainBounds() {
+		String input = "(\"fifty\")?";
 		assertEquals(input, tested.apply(input));
-		assertEquals("beach", wordCapture.getValue());
+		assertEquals("fifty", wordCapture.getValue());
+	}
+
+	@Test
+	public void remainPunctuationFromTheEnd() {
+		String input = "de'o'clock,";
+		reset(translateWord);
+		when(translateWord.apply("deoclock")).thenReturn("deoclocksuffix");
+
+		assertEquals("deoclock's'uffix,", tested.apply(input));
 	}
 
 }

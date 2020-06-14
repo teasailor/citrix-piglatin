@@ -1,4 +1,4 @@
-package ru.pikalova.translator.functions;
+package ru.pikalova.translator.function;
 
 import java.util.function.Function;
 
@@ -9,7 +9,7 @@ public class TranslateWord implements Function<String, String> {
 		if (word == null || word.isEmpty()) {
 			return word;
 		}
-		Function<String, String> convertToLowercase = ((String letters) -> letters.toLowerCase());
+		Function<String, String> convertToLowercase = (String letters) -> letters.toLowerCase();
 		return new RemainPunctuation(new RemainCapitalization(convertToLowercase.andThen(new TranslateLowercaseLetters()))).apply(word);
 	}
 }

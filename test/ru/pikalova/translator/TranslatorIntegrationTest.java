@@ -47,8 +47,14 @@ public class TranslatorIntegrationTest {
 	}
 
 	@Test
-	public void translateComplexText() {
+	public void translateComplexLine() {
 		assertEquals("Iway amway wentytay-ivefay alm(ostway) andway rotherbay-inway-awlay ofway away orgetfay-emay-otnay!",
 				tested.translate("I am twenty-five (almost) and brother-in-law of a forget-me-not!"));
+	}
+
+	@Test
+	public void translateComplexText() {
+		assertEquals("Iamw'ay\r wentytay-ivefay\n!",
+				tested.translate("I'am\r twenty-five\n!"));
 	}
 }

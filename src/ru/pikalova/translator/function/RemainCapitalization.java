@@ -1,6 +1,5 @@
-package ru.pikalova.translator.functions;
+package ru.pikalova.translator.function;
 
-import static java.lang.Character.toUpperCase;
 import static java.lang.String.valueOf;
 import static java.util.regex.Pattern.compile;
 

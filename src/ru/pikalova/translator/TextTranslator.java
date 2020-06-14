@@ -3,7 +3,7 @@ package ru.pikalova.translator;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.joining;
 
-import ru.pikalova.translator.functions.TranslateWord;
+import ru.pikalova.translator.function.TranslateWord;
 
 import java.util.List;
 
