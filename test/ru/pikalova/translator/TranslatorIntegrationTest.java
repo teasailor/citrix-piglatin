@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-public class TranslatorComplexTest {
+public class TranslatorIntegrationTest {
 
 	private TextTranslator tested = new TextTranslator();
 
@@ -15,8 +15,13 @@ public class TranslatorComplexTest {
 	}
 
 	@Test
-	public void translateSimplestText() {
+	public void translateTextWithSpace() {
 		assertEquals("ebay appyhay", tested.translate("be happy"));
+	}
+
+	@Test
+	public void translateTextWithHyphen() {
+		assertEquals(" wentytay-ivefay oneway", tested.translate(" twenty-five one"));
 	}
 
 	@Test
@@ -25,8 +30,8 @@ public class TranslatorComplexTest {
 	}
 
 	@Test
-	public void translateTextWithHyphen() {
-		assertEquals("Iway amway wentytay-ivefay (almostway) andway rotherbay-inway-awlay ofway away orgetfay-emay-otnay!",
+	public void translateComplexText() {
+		assertEquals("Iway amway wentytay-ivefay alm(ostway) andway rotherbay-inway-awlay ofway away orgetfay-emay-otnay!",
 				tested.translate("I am twenty-five (almost) and brother-in-law of a forget-me-not!"));
 	}
 }

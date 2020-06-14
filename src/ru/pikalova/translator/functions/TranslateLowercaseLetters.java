@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 
-class TranslateLetters implements Function<String, String> {
+class TranslateLowercaseLetters implements Function<String, String> {
 	private static final String DEFAULT_SUFFIX = "way";
 	private static final String CONSONANT_SUFFIX = "ay";
 	private static final Set<Character> VOWELS = new HashSet<>(asList('a', 'e', 'i', 'o', 'u'));

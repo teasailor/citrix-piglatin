@@ -52,7 +52,7 @@ public class RemainPunctuationUnitTest {
 	public void remainBounds() {
 		String input = "(\"fifty\")?";
 		assertEquals(input, tested.apply(input));
-		assertEquals("fiftyfifty", wordCapture.getValue());
+		assertEquals("fifty", wordCapture.getValue());
 	}
 
 	@Test

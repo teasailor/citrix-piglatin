@@ -9,7 +9,7 @@ public class TranslateWord implements Function<String, String> {
 		if (world == null || world.isEmpty()) {
 			return world;
 		}
-		Function<String, String> convertToLowerCase = ((String letters) -> letters.toLowerCase());
-		return new RemainPunctuation(new RemainCapitalization(convertToLowerCase.andThen(new TranslateLetters()))).apply(world);
+		Function<String, String> convertToLowercase = ((String letters) -> letters.toLowerCase());
+		return new RemainPunctuation(new RemainCapitalization(convertToLowercase.andThen(new TranslateLowercaseLetters()))).apply(world);
 	}
 }
