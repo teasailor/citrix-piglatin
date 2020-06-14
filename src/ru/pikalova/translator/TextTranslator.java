@@ -3,10 +3,9 @@ package ru.pikalova.translator;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.joining;
 
-import java.util.Iterator;
-import java.util.List;
-
 import ru.pikalova.translator.functions.TranslateWord;
+
+import java.util.List;
 
 public class TextTranslator {
 	private final static List<String> SEPARATORS = asList(" ", "-", "/");
@@ -18,24 +17,14 @@ public class TextTranslator {
 			System.out.println("Nothing to translate: input=[" + input + "]");
 			return input;
 		}
-
-		return translateByWords(input, SEPARATORS.iterator());
-		//		final String space = " ";
-		//		final String hyphen = "-";
-		//		return splitBy(input, space).stream()
-		//				.map(s -> splitBy(s, hyphen).stream()
-		//						.map(w -> splitBy(w, "/").stream()
-		//								.map(translateWord)
-		//								.collect(joining("/")))
-		//						.collect(joining(hyphen)))
-		//				.collect(joining(space));
+		return translateByWords(input, 0);
 	}
 
-	private String translateByWords(String input, Iterator<String> iterator) {
-		if (iterator.hasNext()) {
-			String separator = iterator.next();
+	private String translateByWords(String input, int separatorCount) {
+		if (separatorCount < SEPARATORS.size()) {
+			String separator = SEPARATORS.get(separatorCount);
 			return splitBy(input, separator).stream()
-					.map(word -> translateByWords(word, iterator))
+					.map(word -> translateByWords(word, separatorCount + 1))
 					.collect(joining(separator));
 		}
 		return translateWord.apply(input);

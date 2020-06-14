@@ -3,6 +3,7 @@ package ru.pikalova.translator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TranslatorIntegrationTest {
@@ -15,18 +16,34 @@ public class TranslatorIntegrationTest {
 	}
 
 	@Test
+	public void translateEmpty() {
+		assertEquals(tested.translate(""), "");
+	}
+
+	@Test
 	public void translateTextWithSpace() {
 		assertEquals("ebay appyhay", tested.translate("be happy"));
 	}
 
 	@Test
-	public void translateTextWithHyphen() {
-		assertEquals(" wentytay-ivefay oneway", tested.translate(" twenty-five one"));
+	public void translateTextWithExtraSpaces() {
+		assertEquals(" ebay   appyhay", tested.translate(" be   happy"));
+	}
+
+	@Ignore
+	@Test
+	public void translateTextEndsWithSeparator() {
+		assertEquals("appyhay  ", tested.translate("happy  "));
 	}
 
 	@Test
-	public void translateTextWithExtraSpaces() {
-		assertEquals(" ebay  appyhay  ", tested.translate(" be  happy  "));
+	public void translateTextWithApostrophe() {
+		assertEquals("Iwa'y antca'y aitway'", tested.translate("'I can't wait'"));
+	}
+
+	@Test
+	public void translateTextWithHyphen() {
+		assertEquals(" wentytay-ivefay oneway", tested.translate(" twenty-five one"));
 	}
 
 	@Test

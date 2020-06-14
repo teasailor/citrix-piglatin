@@ -13,6 +13,9 @@ class TranslateLowercaseLetters implements Function<String, String> {
 
 	@Override
 	public String apply(String word) {
+		if (word == null || word.isEmpty()) {
+			return word;
+		}
 		if (word.endsWith(DEFAULT_SUFFIX)) {
 			return word;
 		}

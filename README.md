@@ -29,7 +29,8 @@ following rules:
 1. Use logging (probably, slf4j)
 1. Lombok can be used to make code more laconic
 
-## Tricky points
+## Points to improve
 1. To extend language support WordTranslator.VOWELS should be extended
 2. To extend language support Locale should be configurable
 3. Functional interface can be used instead of "implements Function"
+4. Cover TranslateWord with tests
