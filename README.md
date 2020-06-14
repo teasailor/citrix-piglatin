@@ -22,15 +22,16 @@ following rules:
 1. Input validation
     1. Numbers, other unicode symbols
     2. Max length
-1. Issue: final spaces are erased. it is acceptable?
+1. Issue: separators (e.g. " ", "-") are erased from the end. Is it acceptable?
+
+## Points to improve
+1. To extend language support:
+    1. VOWELS should be extended
+    1. Locale should be configurable
+1. Functional interface can be used instead of "implements Function"
+1. Cover TranslateWord with tests
 1. Performance improvements are possible
 1. Add project management tool
 1. Add JavaDoc on public API
 1. Use logging (probably, slf4j)
 1. Lombok can be used to make code more laconic
-
-## Points to improve
-1. To extend language support WordTranslator.VOWELS should be extended
-2. To extend language support Locale should be configurable
-3. Functional interface can be used instead of "implements Function"
-4. Cover TranslateWord with tests
